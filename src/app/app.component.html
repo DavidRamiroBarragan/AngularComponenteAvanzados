@@ -1,0 +1,38 @@
+<div>
+    <app-tabs>
+        <app-tab title="Timers">
+            <app-timer init="{{timer}}" *ngFor="let timer of timers" (onComplete)="showEndTimerAlert()"></app-timer>
+        </app-tab>
+        <app-tab title="Crono">
+            Crono
+        </app-tab>
+        <app-tab title="Alarm">
+            Alarma
+        </app-tab>
+    </app-tabs>
+
+
+    <button class="add" (click)="showAddTimer()">+</button>
+    <app-alert-view [hidden]="!isAddTimerVisible">
+        <h3>Add new timer</h3>
+        <label for="time">Set the number of seconds for your timer</label>
+        <input [(ngModel)]="time" type="number" id="time" #timerInput>
+
+        <button (click)="hideAddTimer()" class="cancel-button">Cancel</button>
+        <button (click)="submitAddTimers()">Ok</button>
+    </app-alert-view>
+
+    <!--    <app-alert-view [hidden]="!isEndTimerAlertVisible">-->
+    <!--        <h3>Finished</h3>-->
+    <!--        <p>Your countdown has finished</p>-->
+    <!--        <button (click)="hideEndTimerAlert()" class="cancel-button">Cancel</button>-->
+    <!--    </app-alert-view>-->
+<!--    <ng-template #timeEndTemplate>-->
+<!--        <app-simple-alert-view-->
+<!--                title="Timer Ended"-->
+<!--                message="Timer has finished">-->
+<!--        </app-simple-alert-view>-->
+<!--    </ng-template>-->
+<!--    <ng-container [ngTemplateOutlet]="timeEndTemplate"></ng-container>-->
+    <ng-container #alert></ng-container>
+</div>
